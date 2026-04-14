@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sun City Coffee Roasters | El Paso's Specialty Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --espresso: #2C1A0E;
+    --roast: #7A3B1E;
+    --gold: #C8922A;
+    --sand: #E8DCC8;
+    --mist: #F9F6F1;
+    --text: #1E1208;
+    --muted: #7A6A58;
+    --border: rgba(44,26,14,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--mist);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(249,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--espresso);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--espresso); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--espresso);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 2rem 80px;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(200,146,42,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(122,59,30,0.3) 0%, transparent 40%);
+  }
+
+  .hero-beans {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    opacity: 0.06;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,146,42,0.2);
+    border: 1px solid rgba(200,146,42,0.4);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: rgba(245,240,232,0.65);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.2px;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--espresso);
+  }
+
+  .btn-primary:hover { background: #D9A03A; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,240,232,0.3);
+  }
+
+  .btn-outline:hover { border-color: var(--cream); background: rgba(245,240,232,0.05); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(245,240,232,0.1);
+  }
+
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(245,240,232,0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 2rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--espresso);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { color: var(--gold); font-style: italic; }
+
+  .section-body {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* ABOUT */
+  #about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+    height: 480px;
+  }
+
+  .about-card {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+  }
+
+  .about-card-main {
+    top: 0; left: 0;
+    width: 80%;
+    height: 340px;
+    background: var(--espresso);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .about-card-main::before {
+    content: '☕';
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 80px;
+    opacity: 0.15;
+  }
+
+  .about-card-main-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .about-card-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--cream);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .about-card-accent {
+    bottom: 0;
+    right: 0;
+    width: 55%;
+    background: var(--gold);
+    padding: 1.5rem;
+    z-index: 2;
+  }
+
+  .about-card-accent p {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--espresso);
+    line-height: 1.5;
+  }
+
+  .about-card-accent strong {
+    font-size: 28px;
+    font-family: 'Playfair Display', serif;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .about-list {
+    list-style: none;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 16px;
+    color: var(--muted);
+  }
+
+  .about-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 10px;
+    flex-shrink: 0;
+  }
+
+  /* PRODUCTS */
+  #products { background: var(--mist); }
+
+  .products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(44,26,14,0.12);
+  }
+
+  .product-img {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    background: var(--sand);
+    position: relative;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--gold);
+    color: var(--espresso);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .product-body { padding: 1.5rem; }
+
+  .product-origin {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--espresso);
+    margin-bottom: 8px;
+  }
+
+  .product-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--espresso);
+  }
+
+  .product-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .btn-cart {
+    background: var(--espresso);
+    color: var(--cream);
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .btn-cart:hover { background: var(--roast); }
+
+  /* BLOG / SEO PAGES */
+  #blog { background: var(--cream); }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 3rem;
+  }
+
+  .blog-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .blog-img {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+
+  .blog-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+  .blog-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--espresso);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .blog-excerpt {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .blog-meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* GSC CALLOUT */
+  .gsc-banner {
+    background: var(--espresso);
+    border-radius: 16px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .gsc-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .gsc-banner p {
+    color: rgba(245,240,232,0.6);
+    font-size: 15px;
+    max-width: 480px;
+  }
+
+  /* PROCESS */
+  #process { background: var(--mist); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 3rem;
+    background: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .process-step {
+    background: white;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--sand);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .step-icon { font-size: 24px; margin-bottom: 0.75rem; display: block; }
+
+  .step-title {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--espresso);
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--cream); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--sand);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-item-label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  .contact-item-value {
+    font-size: 16px;
+    color: var(--espresso);
+    font-weight: 400;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--espresso);
+    letter-spacing: 0.3px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    background: white;
+    color: var(--text);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--espresso);
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .footer-brand-name span { color: var(--gold); }
+
+  .footer-desc {
+    font-size: 14px;
+    color: rgba(245,240,232,0.45);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .footer-col ul li a {
+    font-size: 14px;
+    color: rgba(245,240,232,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(245,240,232,0.3);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* SCHEMA MARKUP NOTICE (SEO lab visible element) */
+  .seo-meta-bar {
+    background: #1a1a2e;
+    padding: 8px 2rem;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .seo-meta-bar span { font-family: monospace; }
+  .seo-meta-bar .key { color: #4CAF50; }
+  .seo-meta-bar .val { color: rgba(255,255,255,0.5); }
+
+  @media (max-width: 768px) {
+    nav .nav-links { display: none; }
+    .about-grid,
+    .contact-grid,
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .products-grid,
+    .blog-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .gsc-banner { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SEO Meta Bar (for student reference) -->
+<div class="seo-meta-bar">
+  <span><span class="key">title:</span> <span class="val">Sun City Coffee Roasters | Specialty Coffee El Paso TX</span></span>
+  <span><span class="key">meta-description:</span> <span class="val">Locally roasted specialty coffee in El Paso. Shop single-origin beans, espresso blends & subscriptions.</span></span>
+  <span><span class="key">canonical:</span> <span class="val">https://suncitycoffee.com/</span></span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Sun City <span>Coffee</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#blog">Learn</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#products" class="btn btn-primary" style="font-size:14px; padding:10px 20px;">Shop Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <svg class="hero-beans" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="100" cy="100" rx="70" ry="95" fill="white" transform="rotate(-20 100 100)"/>
+    <path d="M100 10 Q130 100 100 190" stroke="#2C1A0E" stroke-width="8" fill="none"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-badge">El Paso's Premier Specialty Roaster</div>
+    <h1>Where the Desert<br>Meets <em>Great Coffee</em></h1>
+    <p>Locally roasted single-origin beans, thoughtfully sourced from the world's finest growing regions — delivered to your door.</p>
+    <div class="hero-cta">
+      <a href="#products" class="btn btn-primary">Shop Coffees</a>
+      <a href="#about" class="btn btn-outline">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">2018</span>
+        <span class="hero-stat-label">Founded</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">12+</span>
+        <span class="hero-stat-label">Origins</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">4,200+</span>
+        <span class="hero-stat-label">Subscribers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Born from the <em>Borderland</em></h2>
+        <p class="section-body">Sun City Coffee Roasters started in a small warehouse off Montana Avenue in 2018. We believed El Paso deserved access to the same world-class specialty coffee enjoyed in major coastal cities — without the pretension.</p>
+        <ul class="about-list">
+          <li>Roasted in small batches, every week, right here in El Paso</li>
+          <li>Direct trade relationships with farms in Ethiopia, Colombia, and Guatemala</li>
+          <li>Free shipping on all subscription orders to the 915 area</li>
+          <li>Proud supporter of UTEP's business school and local hospitality industry</li>
+        </ul>
+        <div style="margin-top: 2rem;">
+          <a href="#process" class="btn btn-primary">See Our Process</a>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card about-card-main">
+          <span class="about-card-main-label">Est. 2018</span>
+          <p class="about-card-main-title">Small-batch roasting in the heart of the 915</p>
+        </div>
+        <div class="about-card about-card-accent">
+          <strong>100%</strong>
+          <p>Arabica beans sourced directly from family-owned farms</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="products-header">
+      <div>
+        <span class="section-label">Shop Coffees</span>
+        <h2 class="section-title">Find Your <em>Perfect Roast</em></h2>
+      </div>
+      <a href="#" class="btn btn-outline" style="color:var(--espresso); border-color:var(--border);">View All →</a>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-img" style="background:#F0E8D5;">☕
+          <span class="product-badge">Best Seller</span>
+        </div>
+        <div class="product-body">
+          <span class="product-origin">Ethiopia · Yirgacheffe</span>
+          <h3 class="product-name">Borderland Bright</h3>
+          <p class="product-desc">Lively and floral with notes of jasmine, bergamot, and a clean citrus finish. Light roast, high altitude grown.</p>
+          <div class="product-footer">
+            <div class="product-price">$18 <span>/ 12oz</span></div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:#E8D5C4;">🫘
+          <span class="product-badge">New Crop</span>
+        </div>
+        <div class="product-body">
+          <span class="product-origin">Colombia · Huila</span>
+          <h3 class="product-name">Sierra Madre Blend</h3>
+          <p class="product-desc">Full-bodied and balanced with caramel sweetness, brown sugar, and a long chocolate finish. Perfect as espresso.</p>
+          <div class="product-footer">
+            <div class="product-price">$16 <span>/ 12oz</span></div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:#D5C4B0;">🌿</div>
+        <div class="product-body">
+          <span class="product-origin">Guatemala · Antigua</span>
+          <h3 class="product-name">Desert Dusk Dark</h3>
+          <p class="product-desc">Smoky, bold, and deeply satisfying. Dark cherry, dark chocolate, and a rich, bittersweet finish. Signature dark roast.</p>
+          <div class="product-footer">
+            <div class="product-price">$17 <span>/ 12oz</span></div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:#E8E0D5;">📦</div>
+        <div class="product-body">
+          <span class="product-origin">Subscription</span>
+          <h3 class="product-name">Sun City Monthly Box</h3>
+          <p class="product-desc">Two 12oz bags of our current seasonal selections, curated by our head roaster. Cancel anytime, no commitment.</p>
+          <div class="product-footer">
+            <div class="product-price">$30 <span>/ month</span></div>
+            <button class="btn-cart">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:#D5E0E8;">❄️</div>
+        <div class="product-body">
+          <span class="product-origin">Ready to Drink</span>
+          <h3 class="product-name">Cold Brew Concentrate</h3>
+          <p class="product-desc">24-hour cold-steeped using our Sierra Madre blend. Rich, smooth, and never bitter. Makes 32 cups per bottle.</p>
+          <div class="product-footer">
+            <div class="product-price">$22 <span>/ 32oz</span></div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:#E8D5D5;">🎁</div>
+        <div class="product-body">
+          <span class="product-origin">Gift Sets</span>
+          <h3 class="product-name">El Paso Coffee Gift Box</h3>
+          <p class="product-desc">Three coffees, a Sun City branded mug, and a handwritten card. Perfect for holidays, birthdays, or corporate gifting.</p>
+          <div class="product-footer">
+            <div class="product-price">$55 <span>/ set</span></div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG (SEO Content) -->
+<section id="blog">
+  <div class="container">
+    <span class="section-label">Learn & Explore</span>
+    <h2 class="section-title">The Sun City <em>Journal</em></h2>
+    <p class="section-body" style="margin-bottom:0;">Brewing guides, origin stories, and coffee education — written for curious coffee lovers, not just experts.</p>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img" style="background:#F0E8D5;">☕</div>
+        <div class="blog-body">
+          <span class="blog-tag">Brewing Guide</span>
+          <h3 class="blog-title">How to Brew Perfect Pour-Over Coffee at Home</h3>
+          <p class="blog-excerpt">The pour-over method extracts nuanced flavors that automatic drip machines can't match. Here's how to master it in under 10 minutes.</p>
+          <span class="blog-meta">June 3, 2024 · 6 min read</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-img" style="background:#E8F0D5;">🌍</div>
+        <div class="blog-body">
+          <span class="blog-tag">Origin Story</span>
+          <h3 class="blog-title">Why Ethiopian Yirgacheffe Is Called the Birthplace of Coffee</h3>
+          <p class="blog-excerpt">The high plateaus of southern Ethiopia produce beans with a complexity that scientists are still working to fully understand.</p>
+          <span class="blog-meta">May 18, 2024 · 8 min read</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-img" style="background:#F0D5D5;">🏪</div>
+        <div class="blog-body">
+          <span class="blog-tag">El Paso Local</span>
+          <h3 class="blog-title">Best Coffee Shops in El Paso: A 2024 Local's Guide</h3>
+          <p class="blog-excerpt">From the historic Kern Place neighborhood to the revitalized Downtown Arts District — where to find great coffee in the 915.</p>
+          <span class="blog-meta">April 30, 2024 · 5 min read</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-img" style="background:#D5E8F0;">❄️</div>
+        <div class="blog-body">
+          <span class="blog-tag">Recipes</span>
+          <h3 class="blog-title">Cold Brew vs. Iced Coffee: What's Actually Different?</h3>
+          <p class="blog-excerpt">Both are cold, both are caffeinated — but the brewing method, flavor profile, and caffeine content are wildly different.</p>
+          <span class="blog-meta">April 12, 2024 · 4 min read</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-img" style="background:#F0E8D5;">🫘</div>
+        <div class="blog-body">
+          <span class="blog-tag">Education</span>
+          <h3 class="blog-title">Light vs. Medium vs. Dark Roast: A Beginner's Guide</h3>
+          <p class="blog-excerpt">Roast level affects acidity, body, flavor, and yes — even caffeine content. Here's what the terms actually mean.</p>
+          <span class="blog-meta">March 28, 2024 · 5 min read</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-img" style="background:#E8D5F0;">🎯</div>
+        <div class="blog-body">
+          <span class="blog-tag">Specialty Coffee</span>
+          <h3 class="blog-title">What Is Specialty Coffee? (And Why the Grade Matters)</h3>
+          <p class="blog-excerpt">The SCA grades green coffee on a 100-point scale. Only beans scoring 80+ earn the "specialty" designation — and it shows in the cup.</p>
+          <span class="blog-meta">March 5, 2024 · 7 min read</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gsc-banner">
+      <div>
+        <h3>Subscribe & Save 15%</h3>
+        <p>Join 4,200+ El Paso coffee lovers who get freshly roasted beans delivered every 2 or 4 weeks. Free shipping, flexible schedule, cancel any time.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem; min-width:200px;">
+        <a href="#contact" class="btn btn-primary" style="text-align:center;">Start Subscription</a>
+        <a href="#products" class="btn btn-outline" style="text-align:center; border-color:rgba(245,240,232,0.3); color:var(--cream);">Browse Coffees</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <span class="section-label">From Farm to Cup</span>
+    <h2 class="section-title">How We <em>Roast</em></h2>
+    <p class="section-body">Every bag you receive has gone through a meticulous four-step journey before it reaches your kitchen.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <span class="step-icon">🌱</span>
+        <div class="step-title">Direct Sourcing</div>
+        <p class="step-desc">We travel to origin farms annually to taste and select green coffee lots, paying above Fair Trade minimums directly to farmers.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <span class="step-icon">🔬</span>
+        <div class="step-title">Green Grading</div>
+        <p class="step-desc">On arrival in El Paso, every lot is cupped and scored by our certified Q-Grader. Only 80+ SCA-scored coffees make the cut.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <span class="step-icon">🔥</span>
+        <div class="step-title">Small-Batch Roasting</div>
+        <p class="step-desc">Roasted in 15kg batches on our Probat roaster every Tuesday and Friday. Orders ship within 48 hours of roasting for peak freshness.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <span class="step-icon">📦</span>
+        <div class="step-title">Sealed & Shipped</div>
+        <p class="step-desc">Packed in nitrogen-flushed, valve-sealed bags that preserve freshness for up to 6 months — though they rarely last that long.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title">We're Always <em>Brewing</em></h2>
+        <p class="section-body" style="margin-bottom:2rem;">Questions about an order? Want to stock our coffee at your café? We'd love to hear from you.</p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <span class="contact-item-label">Location</span>
+              <p class="contact-item-value">1842 Montana Ave, El Paso, TX 79902</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <span class="contact-item-label">Roastery Hours</span>
+              <p class="contact-item-value">Mon–Sat: 8am–5pm · Sun: Closed</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <span class="contact-item-label">Email</span>
+              <p class="contact-item-value">hello@suncitycoffeeroasters.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <span class="contact-item-label">Phone</span>
+              <p class="contact-item-value">(915) 555-0194</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:white; border-radius:12px; padding:2rem; border:1px solid var(--border);">
+          <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--espresso); margin-bottom:1.5rem; font-weight:700;">Send a Message</h3>
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Maria">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Garcia">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="maria@example.com">
+            </div>
+            <div class="form-group">
+              <label>Topic</label>
+              <select>
+                <option>Order question</option>
+                <option>Wholesale inquiry</option>
+                <option>Subscription help</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Tell us how we can help..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%; text-align:center;" onclick="alert('Thanks! We\'ll be in touch within 24 hours. ☕')">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Sun City <span>Coffee</span></div>
+      <p class="footer-desc">Specialty coffee roasted with care in El Paso, TX. Because great coffee and great community go hand in hand.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Light Roasts</a></li>
+        <li><a href="#">Medium Roasts</a></li>
+        <li><a href="#">Dark Roasts</a></li>
+        <li><a href="#">Subscriptions</a></li>
+        <li><a href="#">Gift Sets</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="#">Brewing Guides</a></li>
+        <li><a href="#">Coffee Origins</a></li>
+        <li><a href="#">Roast Levels</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Wholesale</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Sun City Coffee Roasters, LLC · El Paso, Texas</span>
+    <span>Privacy Policy · Terms of Service · Sitemap</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.btn-cart').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const original = this.textContent;
+      this.textContent = 'Added! ✓';
+      this.style.background = '#3B6D11';
+      setTimeout(() => {
+        this.textContent = original;
+        this.style.background = '';
+      }, 1500);
+    });
+  });
+
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      nav.style.boxShadow = '0 4px 24px rgba(44,26,14,0.08)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
